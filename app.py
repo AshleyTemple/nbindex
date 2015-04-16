@@ -1,15 +1,17 @@
 import tornado.httpserver
 import tornado.web
 
-class ApiHandler(tornado.web.RequestHandler):
-    def get(self, uuid):
-        self.write("you wanted to get %s"%uuid)
+from .index import IndexClient
 
-    def post(self, uuid):
-        self.write('you posted to %s'%uuid)
+class ApiHandler(tornado.web.RequestHandler):
+    def get(self, key):
+        self.write("you wanted to get %s"%key)
+
+    def post(self, key):
+        self.write('you posted to %s'%key)
     
-    def delete(self, uuid):
-        self.write('you wanted to delete %s'%uuid)
+    def delete(self, key):
+        self.write('you wanted to delete %s'%key)
 
 
 application = tornado.web.Application([
